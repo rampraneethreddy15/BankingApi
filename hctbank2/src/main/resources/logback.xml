@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="myConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss:SS} [%thread] %-5level %logger{36} -%msg%n
+            </pattern>
+
+        </encoder>
+    </appender>
+    <appender name="myFileAppender" class="ch.qos.logback.core.FileAppender">
+
+
+        <rolllingpolicy class="ch.qos.logback.core.rolling.SizeandTimeBasedRollingPolicy">
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>10</maxHistory>
+
+
+        </rolllingpolicy>
+
+
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss:SS} [%thread] %-5level %logger{36} -%msg%n
+            </pattern>
+        </encoder>
+        <file>
+            journalApp.log
+        </file>
+        
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="myConsoleAppender"/>
+        <appender-ref ref="myFileAppender"/>
+    </root>
+</configuration>
